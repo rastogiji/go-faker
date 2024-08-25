@@ -35,7 +35,7 @@ type Person struct {
 }
 
 func main(){
-	f := gofaker.New()
+    f:= gofaker.New()	
     p := Person{}
     f.Struct(&p)
     fmt.Println(p)
