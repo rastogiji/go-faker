@@ -35,9 +35,12 @@ func (f *Faker) Struct(v interface{}) {
 			}
 		case "email":
 			if len(tagVal) >= 2 {
+				if reflect.TypeOf(tagVal[1]) != reflect.TypeOf("") {
+					val.Field(i).SetString(f.Email(1))
+				}
 				num, err := strconv.Atoi(tagVal[1])
 				if err != nil {
-					continue
+					val.Field(i).SetString(f.Email(1))
 				}
 				val.Field(i).SetString(f.Email(num))
 			} else {
